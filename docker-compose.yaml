@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  zendesk_coding_exercise:
+    container_name: zendesk_coding_exercise
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo_db
+    environment:
+      - NODE_ENV=prd
+    ports:
+      - 3000:3000
+
+  mongo_db:
+    container_name: mongo_db
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - db:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  db: {}

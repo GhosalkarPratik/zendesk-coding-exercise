@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  title: Zendesk Coding Exercise
+  version: 1.0.0
+
+servers:
+  - url: 'http://127.0.0.1:3000'
+    description: This value is same for both service running locally or as a docker container
+
+paths:
+  /api/v1/reply:
+    post:
+      summary: Get a reply for input message and botId
+      description: |
+        The endpoint also returns the intent and confidence along with the reply.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                botId:
+                  type: string
+                  description: Use '5f74865056d7bb000fcd39ff' as the value always
+                  example: 5f74865056d7bb000fcd39ff
+                message:
+                  type: string
+                  description: The message to analyze for intent
+                  example: Hello this is a chat message
+              required:
+                - botId
+                - message
+      responses:
+        200:
+          description: The most suitable response to the input message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reply:
+                    type: string
+                    description: The most suitable reply to input message
+                    example: Hello! How can I help you today?
+                  intent:
+                    type: string
+                    description: The recognized intent from input message
+                    example: Greeting
+                  confidence:
+                    type: number
+                    description: The surety of reply being correct
+                    example: 0.647920
+                required:
+                  - reply
+                  - intent
+                  - confidence
+        400:
+          description: If the input message or botId is invalid, it returns 400
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: array
+                    description: Specific errors for the input request
+                    items:
+                      type: string
+                  error:
+                    type: string
+                    description: Error message for validation error
+                  statusCode:
+                    type: number
+                    description: the HTTP status code 400
+                    example: 400
+        500:
+          description: Internal server errors
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message for internal error
+                  statusCode:
+                    type: number
+                    description: the HTTP status code 400
+                    example: 500

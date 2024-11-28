@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: ultimate.ai Intents API
+  description: ultimate.ai Intents API
+  version: 1.0.0
+servers:
+  - url: 'https://chat.ultimate.ai/api'
+paths:
+  /backend-challenge/intents:
+    post:
+      summary: Get predicted intents for a visitor message and bot
+      tags:
+        - Intents
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                botId:
+                  description: Identifier of bot
+                  $ref: '#/components/schemas/MongoObjectId'
+                  # Use the following example value for the challenge to yield results
+                  example: 5f74865056d7bb000fcd39ff
+                message:
+                  type: string
+                  description: The message to analyze for intent
+                  example: Hello this is a chat message
+              required:
+                - botId
+                - message
+      responses:
+        '200': # status code
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  intents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        confidence:
+                          type: number
+                          example: 0.7
+                        name:
+                          type: string
+                          example: Intent name
+                      required:
+                      - confidence
+                      - name
+                  entities:
+                    type: array
+                    items:
+                      type: object
+        '400': # status code
+          description: Bad Request
+        '401': # status code
+          description: Unauthorized
+        '404': # status code
+          description: Bot not recognized
+        '500': # status code
+          description: Internal Server Error
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: authorization
+  schemas:
+    MongoObjectId:
+      type: string
+      pattern: '/^[a-f\d]{24}$/i'
+      example: 5f74865056d7bb000fcd39ff

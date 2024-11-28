@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "a45149f2-8127-4d79-b096-0f0fb4bfe68f",
+		"name": "ZenDesk Coding Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33040669"
+	},
+	"item": [
+		{
+			"name": "Generate Reply",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"Hello!\",\n    \"botId\": \"{{botId}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/reply",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"reply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Populate data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"reply\": \"Hello! How can I help you?\",\n        \"threshold\": 0.6,\n        \"intent\": \"Greeting\"\n    },\n    {\n        \"reply\": \"I hope your query is resolved. Bye!\",\n        \"threshold\": 0.65,\n        \"intent\": \"Goodbye\"\n    },\n    {\n        \"reply\": \"Yes, indeed\",\n        \"threshold\": 0.6,\n        \"intent\": \"Affirmative\"\n    },\n    {\n        \"reply\": \"You're welcome!\",\n        \"threshold\": 0.7,\n        \"intent\": \"Thank you\"\n    },\n    {\n        \"reply\": \"I'm doing great! How about you?\",\n        \"threshold\": 0.75,\n        \"intent\": \"How are you doing?\"\n    },\n    {\n        \"reply\": \"You can ask me about your orders, payment options, account issues, and more!\",\n        \"threshold\": 0.8,\n        \"intent\": \"What can I ask you?\"\n    },\n    {\n        \"reply\": \"Could you please tell me more about the product or service you're interested in?\",\n        \"threshold\": 0.65,\n        \"intent\": \"Product interest or quote request\"\n    },\n    {\n        \"reply\": \"Let me help you complete your order. Can you provide more details?\",\n        \"threshold\": 0.66666,\n        \"intent\": \"Incomplete order\"\n    },\n    {\n        \"reply\": \"Checking your order status. Please wait a moment.\",\n        \"threshold\": 0.71,\n        \"intent\": \"Order status\"\n    },\n    {\n        \"reply\": \"I'll connect you to a human representative. One moment, please.\",\n        \"threshold\": 0.5,\n        \"intent\": \"I want to speak with a human\"\n    },\n    {\n        \"reply\": \"We can arrange a collection for your order. Could you provide the details?\",\n        \"threshold\": 0.55,\n        \"intent\": \"Arranging collection for order\"\n    },\n    {\n        \"reply\": \"Can you provide more details about the product or service you're interested in?\",\n        \"threshold\": 0.60,\n        \"intent\": \"Product interest or quote request\"\n    },\n    {\n        \"reply\": \"Please provide your order ID so I can check the status for you.\",\n        \"threshold\": 0.74,\n        \"intent\": \"Order status\"\n    },\n    {\n        \"reply\": \"To return your order, please provide your order ID and reason for the return.\",\n        \"threshold\": 0.5,\n        \"intent\": \"Returning order\"\n    },\n    {\n        \"reply\": \"I'm sorry to hear that. Please describe your reclamation issue.\",\n        \"threshold\": 0.9,\n        \"intent\": \"Reclamation\"\n    },\n    {\n        \"reply\": \"I can assist you with the return label. Please provide the order details.\",\n        \"threshold\": 0.7,\n        \"intent\": \"Label for returning\"\n    },\n    {\n        \"reply\": \"I'll connect you to a human representative. Please wait a moment.\",\n        \"threshold\": 0.7388,\n        \"intent\": \"I want to speak with a human\"\n    },\n    {\n        \"reply\": \"You can contact us through our email or phone support. What works best for you?\",\n        \"threshold\": 0.82738,\n        \"intent\": \"Means or need to contact\"\n    },\n    {\n        \"reply\": \"Our office is located at [address]. We are open from 9 AM to 5 PM.\",\n        \"threshold\": 0.63892,\n        \"intent\": \"Office or store location and opening hours\"\n    },\n    {\n        \"reply\": \"To update your information, please provide your customer ID or email.\",\n        \"threshold\": 0.752,\n        \"intent\": \"Updating customer information\"\n    },\n    {\n        \"reply\": \"Could you provide more details about the product or service you're interested in?\",\n        \"threshold\": 0.4382,\n        \"intent\": \"Product interest or quote request\"\n    },\n    {\n        \"reply\": \"You can reach us via phone or email. Let me know how I can assist you further.\",\n        \"threshold\": 0.6287,\n        \"intent\": \"Means or need to contact\"\n    },\n    {\n        \"reply\": \"Connecting you to a human representative. Please wait a moment.\",\n        \"threshold\": 0.53672,\n        \"intent\": \"I want to speak with a human\"\n    },\n    {\n        \"reply\": \"We accept payments through credit cards, PayPal, and bank transfers. What works for you?\",\n        \"threshold\": 0.73882,\n        \"intent\": \"Payment options\"\n    },\n    {\n        \"reply\": \"You can update your information in your account settings or share the details here.\",\n        \"threshold\": 0.5367,\n        \"intent\": \"Updating customer information\"\n    },\n    {\n        \"reply\": \"Our office is located at [address]. Operating hours are 9 AM to 5 PM.\",\n        \"threshold\": 0.67238,\n        \"intent\": \"Office or store location and opening hours\"\n    },\n    {\n        \"reply\": \"Please share the payment terms you'd like to adjust.\",\n        \"threshold\": 0.5532719,\n        \"intent\": \"Changes to payment terms\"\n    },\n    {\n        \"reply\": \"To set up e-invoicing, please visit your account settings or contact our support.\",\n        \"threshold\": 0.7828,\n        \"intent\": \"How to set up e-invoice\"\n    },\n    {\n        \"reply\": \"If you believe the invoice is incorrect, please share the invoice details.\",\n        \"threshold\": 0.77628,\n        \"intent\": \"Unjustified invoice and dunning\"\n    },\n    {\n        \"reply\": \"Your invoice is due on [date]. Let me know if you need an extension.\",\n        \"threshold\": 0.6278,\n        \"intent\": \"Invoice due date\"\n    },\n    {\n        \"reply\": \"Having trouble logging in? Try resetting your password or contact support.\",\n        \"threshold\": 0.7667,\n        \"intent\": \"Login problems\"\n    },\n    {\n        \"reply\": \"You can contact us via phone or email. How can I assist further?\",\n        \"threshold\": 0.536829,\n        \"intent\": \"Means or need to contact\"\n    },\n    {\n        \"reply\": \"To open or close an account, please provide your account details.\",\n        \"threshold\": 0.73668,\n        \"intent\": \"Open or close account\"\n    },\n    {\n        \"reply\": \"Yes, I'm a bot! I'm here to help you. Let me know what you need.\",\n        \"threshold\": 0.53682,\n        \"intent\": \"Are you a bot?\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/internal/reply-intent-data",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"internal",
+						"reply-intent-data"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:3000",
+			"type": "string"
+		},
+		{
+			"key": "botId",
+			"value": "5f74865056d7bb000fcd39ff",
+			"type": "string"
+		}
+	]
+}
